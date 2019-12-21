@@ -1,4 +1,4 @@
-const app = require('./app')
+import app from './app';
 import {conexionDB} from './database';
 
 let main = async () => {
