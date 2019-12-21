@@ -6,7 +6,7 @@
     "scripts": {
         "app": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "npm run app && node src/index.js",
+        "start": "node src/index.js",
         "dev": "nodemon src/index.ts"
     },
     "keywords": [],
