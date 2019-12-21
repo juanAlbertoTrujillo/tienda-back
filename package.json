@@ -6,7 +6,7 @@
     "scripts": {
         "app": "tsc",
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "node ./src/index.ts",
+        "start": "node src/index.ts",
         "dev": "nodemon src/index.ts"
     },
     "keywords": [],
@@ -23,6 +23,9 @@
         "uuid": "^3.3.3"
     },
     "devDependencies": {
+        "@babel/core": "^7.7.7",
+        "@babel/preset-env": "^7.7.7",
+        "@babel/register": "^7.7.7",
         "@types/express": "^4.17.2",
         "@types/mongoose": "^5.5.34",
         "@types/morgan": "^1.7.37",
