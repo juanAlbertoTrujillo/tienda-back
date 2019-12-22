@@ -10,7 +10,7 @@ async function consultarCarrito(req, res) {
 }
 exports.consultarCarrito = consultarCarrito;
 async function agregarArticuloCarrito(req, res) {
-    let { codigo, cantidad, usuario, identificador } = req.body;
+    let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
     console.log(identificador);
     if (!identificador) {
         console.log('entra');
@@ -20,7 +20,12 @@ async function agregarArticuloCarrito(req, res) {
         codigo,
         cantidad,
         usuario,
-        identificador
+        identificador,
+        titulo,
+        descripcion,
+        precio,
+        categoria,
+        imagenURL
     };
     const carrito = new Carrito_1.default(nuevoArticulo);
     await carrito.save();
