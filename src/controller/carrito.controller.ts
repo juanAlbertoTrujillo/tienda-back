@@ -10,6 +10,7 @@ export async function consultarCarrito(req: Request, res: Response): Promise<Res
 export async function agregarArticuloCarrito(req: Request, res: Response): Promise<Response> {
 
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
+    
     console.log(identificador)
     if( !identificador ){
         console.log('entra')
