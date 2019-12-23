@@ -11,33 +11,44 @@ async function consultarCarrito(req, res) {
 exports.consultarCarrito = consultarCarrito;
 async function agregarArticuloCarrito(req, res) {
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
-    const existeArticulo = await Carrito_1.default.find({
+    const carrito = await Carrito_1.default.find({
         identificador,
         codigo
     });
-    if (existeArticulo.length >= 1) {
+    if (carrito.length >= 1) {
+        cantidad = carrito;
+        console.log(cantidad.cantidad);
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>');
-        console.log(existeArticulo);
+        const actualizado = await Carrito_1.default.findOneAndUpdate({
+            identificador,
+            codigo
+        }, {
+            cantidad
+        }, {
+            new: true
+        });
     }
-    console.log(identificador);
-    if (!identificador) {
-        console.log('entra');
-        identificador = v1_1.default();
+    else {
+        console.log(identificador);
+        if (!identificador) {
+            console.log('entra');
+            identificador = v1_1.default();
+        }
+        const nuevoArticulo = {
+            codigo,
+            cantidad,
+            usuario,
+            identificador,
+            titulo,
+            descripcion,
+            precio,
+            categoria,
+            imagenURL
+        };
+        const carrito = new Carrito_1.default(nuevoArticulo);
+        await carrito.save();
+        console.log(carrito);
     }
-    const nuevoArticulo = {
-        codigo,
-        cantidad,
-        usuario,
-        identificador,
-        titulo,
-        descripcion,
-        precio,
-        categoria,
-        imagenURL
-    };
-    const carrito = new Carrito_1.default(nuevoArticulo);
-    await carrito.save();
-    console.log(carrito);
     return res.status(200).json({
         mensaje: 'Articulo agregado al carrito',
         carrito
