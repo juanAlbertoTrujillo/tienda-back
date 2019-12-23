@@ -12,11 +12,14 @@ exports.consultarCarrito = consultarCarrito;
 async function agregarArticuloCarrito(req, res) {
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
     let respuesta;
+    console.log('identificador1111111111111111111');
     console.log(identificador);
     if (!identificador) {
         console.log('entra');
         identificador = v1_1.default();
     }
+    console.log('identificador2');
+    console.log(identificador);
     const carrito = await Carrito_1.default.findOne({
         identificador,
         codigo
