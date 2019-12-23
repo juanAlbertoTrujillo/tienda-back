@@ -17,7 +17,7 @@ async function agregarArticuloCarrito(req, res) {
     }).lean();
     if (carrito.length >= 1) {
         console.log(carrito);
-        cantidad = carrito[0].cantidad;
+        cantidad = carrito[0].cantidad + 1;
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>');
         const actualizado = await Carrito_1.default.findOneAndUpdate({
             identificador,
