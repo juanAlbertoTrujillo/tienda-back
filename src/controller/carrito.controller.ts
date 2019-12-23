@@ -40,7 +40,9 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
 
 export async function eliminarArticuloCarrito(req: Request, res: Response): Promise<Response> {
     
-    const { codigo, usuario, _id } = req.body;
+    const { codigo, usuario, identificador, _id } = req.body;
+    console.log(req.body)
+    console.log(_id)
     const eliminado = await Carrito.findOneAndRemove({
         _id
     });
