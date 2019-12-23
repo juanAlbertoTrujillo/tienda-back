@@ -12,15 +12,20 @@ exports.consultarCarrito = consultarCarrito;
 async function agregarArticuloCarrito(req, res) {
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
     let respuesta;
+    console.log(identificador);
+    if (!identificador) {
+        console.log('entra');
+        identificador = v1_1.default();
+    }
     const carrito = await Carrito_1.default.findOne({
         identificador,
         codigo
     }).lean();
     console.log('<<<<<<<findOOOOOOOOOOOOOOOOOOOOOOOOOne>>>>>>>');
     console.log(carrito);
-    if (carrito.length >= 1) {
+    if (carrito || carrito.length >= 1) {
         console.log(carrito);
-        cantidad = carrito[0].cantidad + 1;
+        cantidad = carrito.cantidad + 1;
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>');
         respuesta = await Carrito_1.default.findOneAndUpdate({
             identificador,
@@ -32,11 +37,6 @@ async function agregarArticuloCarrito(req, res) {
         });
     }
     else {
-        console.log(identificador);
-        if (!identificador) {
-            console.log('entra');
-            identificador = v1_1.default();
-        }
         const nuevoArticulo = {
             codigo,
             cantidad,
@@ -49,12 +49,12 @@ async function agregarArticuloCarrito(req, res) {
             imagenURL
         };
         const carrito = new Carrito_1.default(nuevoArticulo);
-        await carrito.save();
-        console.log(carrito);
+        respuesta = await carrito.save();
+        console.log(respuesta);
     }
     return res.status(200).json({
         mensaje: 'Articulo agregado al carrito',
-        carrito
+        respuesta
     });
 }
 exports.agregarArticuloCarrito = agregarArticuloCarrito;
