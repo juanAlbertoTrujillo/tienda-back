@@ -16,4 +16,10 @@ const schema = new mongoose_1.Schema({
     },
     identificador: String
 });
+// interface ICarrito extends Document{
+//     codigo: number,
+//     cantidad: number,
+//     usuario: string,
+//     identificador: string
+// }
 exports.default = mongoose_1.model('Carrito', schema);

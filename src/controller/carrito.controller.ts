@@ -16,7 +16,7 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
         identificador,
         codigo
     }).lean();
-    console.log('<<<<<<<findOne>>>>>>>')
+    console.log('<<<<<<<findOOOOOOOOOOOOOOOOOOOOOOOOOne>>>>>>>')
     console.log(carrito)
     if (carrito.length >= 1) {
         

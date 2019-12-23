@@ -11,15 +11,18 @@ async function consultarCarrito(req, res) {
 exports.consultarCarrito = consultarCarrito;
 async function agregarArticuloCarrito(req, res) {
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
-    const carrito = await Carrito_1.default.find({
+    let respuesta;
+    const carrito = await Carrito_1.default.findOne({
         identificador,
         codigo
     }).lean();
+    console.log('<<<<<<<findOOOOOOOOOOOOOOOOOOOOOOOOOne>>>>>>>');
+    console.log(carrito);
     if (carrito.length >= 1) {
         console.log(carrito);
         cantidad = carrito[0].cantidad + 1;
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>');
-        const actualizado = await Carrito_1.default.findOneAndUpdate({
+        respuesta = await Carrito_1.default.findOneAndUpdate({
             identificador,
             codigo
         }, {
