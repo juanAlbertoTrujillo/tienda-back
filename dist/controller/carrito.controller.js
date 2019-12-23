@@ -49,11 +49,8 @@ async function eliminarArticuloCarrito(req, res) {
 }
 exports.eliminarArticuloCarrito = eliminarArticuloCarrito;
 async function actualizarArticuloCarrito(req, res) {
-    const { codigo, usuario, cantidad } = req.body;
-    const actualizado = await Carrito_1.default.findOneAndUpdate({
-        codigo,
-        usuario
-    }, {
+    const { _id, cantidad } = req.body;
+    const actualizado = await Carrito_1.default.findOneAndUpdate(_id, {
         cantidad
     }, {
         new: true

@@ -53,11 +53,10 @@ export async function eliminarArticuloCarrito(req: Request, res: Response): Prom
 
 export async function actualizarArticuloCarrito(req: Request, res: Response): Promise<Response> {
 
-    const { codigo, usuario, cantidad } = req.body;
-    const actualizado = await Carrito.findOneAndUpdate({
-        codigo,
-        usuario
-    },{
+    const { _id, cantidad } = req.body;
+    const actualizado = await Carrito.findOneAndUpdate(
+        _id,
+    {
         cantidad
     },{
         new: true
