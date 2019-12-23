@@ -15,8 +15,10 @@ async function agregarArticuloCarrito(req, res) {
         identificador,
         codigo
     });
-    console.log('find');
-    console.log(existeArticulo);
+    if (existeArticulo) {
+        console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>');
+        console.log(existeArticulo);
+    }
     console.log(identificador);
     if (!identificador) {
         console.log('entra');
