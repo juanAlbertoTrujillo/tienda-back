@@ -15,7 +15,7 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
         identificador,
         codigo
     });
-    if (existeArticulo) {
+    if (existeArticulo.length >= 1) {
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>')
         console.log(existeArticulo)
     }

@@ -15,7 +15,7 @@ async function agregarArticuloCarrito(req, res) {
         identificador,
         codigo
     });
-    if (existeArticulo) {
+    if (existeArticulo.length >= 1) {
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>');
         console.log(existeArticulo);
     }
