@@ -6,32 +6,26 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Carrito_1 = __importDefault(require("../models/Carrito"));
 const v1_1 = __importDefault(require("uuid/v1"));
 async function consultarCarrito(req, res) {
-    return res.status(200).json(await Carrito_1.default.find());
+    console.log("consultarCarrito");
+    console.log(req);
+    const carrito = await Carrito_1.default.find();
+    return res.status(200).json(carrito);
 }
 exports.consultarCarrito = consultarCarrito;
 async function agregarArticuloCarrito(req, res) {
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
     let respuesta;
-    console.log('identificador1111111111111111111');
-    console.log(identificador);
-    console.log(identificador === 'undefined');
-    console.log(identificador === undefined);
-    if (identificador === 'undefined') {
+    if (identificador === undefined) {
         console.log('entra');
         identificador = v1_1.default();
     }
-    console.log('identificador2');
-    console.log(identificador);
     const carrito = await Carrito_1.default.findOne({
         identificador,
         codigo
     }).lean();
-    console.log('<<<<<<<findOOOOOOOOOOOOOOOOOOOOOOOOOne>>>>>>>');
-    console.log(carrito);
     if (carrito) {
         console.log(carrito);
         cantidad = carrito.cantidad + 1;
-        console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>');
         respuesta = await Carrito_1.default.findOneAndUpdate({
             identificador,
             codigo

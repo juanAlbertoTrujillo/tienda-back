@@ -3,7 +3,10 @@ import Carrito from '../models/Carrito';
 import uuidv1 from 'uuid/v1';
 
 export async function consultarCarrito(req: Request, res: Response): Promise<Response> {
-    return res.status(200).json( await Carrito.find());
+    console.log("consultarCarrito")
+    console.log(req);
+    const carrito = await Carrito.find()
+    return res.status(200).json(carrito);
    
 }
 
@@ -12,28 +15,20 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
     let respuesta;
     
-    console.log('identificador1111111111111111111')
-    console.log(identificador)
-    console.log(identificador === 'undefined')
-    console.log(identificador === undefined)
-    if( identificador === 'undefined'){
+    if( identificador === undefined){
         console.log('entra')
         identificador = uuidv1();
     }
-    console.log('identificador2')
-    console.log(identificador)
 
     const carrito = await Carrito.findOne({
         identificador,
         codigo
     }).lean();
-    console.log('<<<<<<<findOOOOOOOOOOOOOOOOOOOOOOOOOne>>>>>>>')
-    console.log(carrito)
+
     if (carrito) {
         
         console.log(carrito)
         cantidad = carrito.cantidad +1;
-        console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>')
         respuesta = await Carrito.findOneAndUpdate(
             {
                 identificador,
