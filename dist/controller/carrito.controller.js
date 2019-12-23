@@ -38,6 +38,8 @@ async function agregarArticuloCarrito(req, res) {
 exports.agregarArticuloCarrito = agregarArticuloCarrito;
 async function eliminarArticuloCarrito(req, res) {
     const { codigo, usuario, identificador, _id } = req.body;
+    console.log('req');
+    console.log(req);
     console.log(req.body);
     console.log(_id);
     const eliminado = await Carrito_1.default.findOneAndRemove({
