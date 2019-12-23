@@ -18,7 +18,7 @@ const schema = new Schema({
 
 interface ICarrito extends Document{
     codigo: number,
-    [cantidad: number]:any[],
+    cantidad: number,
     usuario: string,
     identificador: string
 }
