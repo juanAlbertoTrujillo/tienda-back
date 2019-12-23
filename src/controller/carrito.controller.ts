@@ -5,6 +5,7 @@ import uuidv1 from 'uuid/v1';
 export async function consultarCarrito(req: Request, res: Response): Promise<Response> {
     console.log("consultarCarrito")
     console.log(req.body);
+    console.log(req.params);
     const carrito = await Carrito.find()
     return res.status(200).json(carrito);
    
