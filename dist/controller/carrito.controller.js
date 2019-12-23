@@ -14,7 +14,7 @@ async function agregarArticuloCarrito(req, res) {
     let respuesta;
     console.log('identificador1111111111111111111');
     console.log(identificador);
-    if (!identificador) {
+    if (!identificador || identificador === undefined) {
         console.log('entra');
         identificador = v1_1.default();
     }
