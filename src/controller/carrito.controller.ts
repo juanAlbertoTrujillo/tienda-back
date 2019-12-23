@@ -10,16 +10,20 @@ export async function consultarCarrito(req: Request, res: Response): Promise<Res
 export async function agregarArticuloCarrito(req: Request, res: Response): Promise<Response> {
 
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
+    let respuesta;
 
-    const carrito = await Carrito.find({
+    const carrito = await Carrito.findOne({
         identificador,
         codigo
     }).lean();
+    console.log('<<<<<<<findOne>>>>>>>')
+    console.log(carrito)
     if (carrito.length >= 1) {
+        
         console.log(carrito)
         cantidad = carrito[0].cantidad +1;
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>')
-        const actualizado = await Carrito.findOneAndUpdate(
+        respuesta = await Carrito.findOneAndUpdate(
             {
                 identificador,
                 codigo
@@ -30,6 +34,7 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
                 new: true
             });
     } else{
+
         console.log(identificador)
         if( !identificador ){
             console.log('entra')

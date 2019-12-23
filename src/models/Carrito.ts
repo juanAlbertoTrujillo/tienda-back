@@ -16,11 +16,11 @@ const schema = new Schema({
     identificador: String
 });
 
-interface ICarrito extends Document{
-    codigo: number,
-    cantidad: number,
-    usuario: string,
-    identificador: string
-}
+// interface ICarrito extends Document{
+//     codigo: number,
+//     cantidad: number,
+//     usuario: string,
+//     identificador: string
+// }
 
-export default model<ICarrito>('Carrito', schema);
+export default model('Carrito', schema);
