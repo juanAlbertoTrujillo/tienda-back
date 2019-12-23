@@ -14,10 +14,9 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
     const carrito = await Carrito.find({
         identificador,
         codigo
-    });
+    }).lean();
     if (carrito.length >= 1) {
-        console.log(carrito[cantidad])
-        cantidad = carrito[cantidad];
+        cantidad = carrito[1];
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>')
         const actualizado = await Carrito.findOneAndUpdate(
             {
