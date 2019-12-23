@@ -11,6 +11,12 @@ async function consultarCarrito(req, res) {
 exports.consultarCarrito = consultarCarrito;
 async function agregarArticuloCarrito(req, res) {
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
+    const existeArticulo = await Carrito_1.default.find({
+        identificador,
+        codigo
+    });
+    console.log('find');
+    console.log(existeArticulo);
     console.log(identificador);
     if (!identificador) {
         console.log('entra');
