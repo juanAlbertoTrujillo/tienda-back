@@ -24,4 +24,7 @@ router.route('/carrito')
     .delete(eliminarArticuloCarrito)
     .put(actualizarArticuloCarrito)
 
+router.route('/carrito/:_id')
+    .delete(eliminarArticuloCarrito)
+
 export default router;
