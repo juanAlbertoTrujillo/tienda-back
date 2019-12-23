@@ -7,7 +7,7 @@ const Carrito_1 = __importDefault(require("../models/Carrito"));
 const v1_1 = __importDefault(require("uuid/v1"));
 async function consultarCarrito(req, res) {
     console.log("consultarCarrito");
-    console.log(req);
+    console.log(req.body);
     const carrito = await Carrito_1.default.find();
     return res.status(200).json(carrito);
 }
