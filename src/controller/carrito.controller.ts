@@ -45,6 +45,8 @@ export async function eliminarArticuloCarrito(req: Request, res: Response): Prom
     console.log(req)
     console.log(req.body)
     console.log(_id)
+    console.log('req params')
+    console.log(req.params)
     const eliminado = await Carrito.findOneAndRemove({
         _id
     });

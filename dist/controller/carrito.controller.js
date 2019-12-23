@@ -42,6 +42,8 @@ async function eliminarArticuloCarrito(req, res) {
     console.log(req);
     console.log(req.body);
     console.log(_id);
+    console.log('req params');
+    console.log(req.params);
     const eliminado = await Carrito_1.default.findOneAndRemove({
         _id
     });
