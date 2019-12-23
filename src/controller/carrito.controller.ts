@@ -17,6 +17,8 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
         identificador = uuidv1();
     }
 
+
+
     const nuevoArticulo = {
         codigo,
         cantidad,
@@ -57,9 +59,12 @@ export async function eliminarArticuloCarrito(req: Request, res: Response): Prom
 
 export async function actualizarArticuloCarrito(req: Request, res: Response): Promise<Response> {
 
-    const { _id, cantidad } = req.body;
+    const { _id, cantidad, identificador, codigo, usuario } = req.body;
     const actualizado = await Carrito.findOneAndUpdate(
-        _id,
+    {
+        identificador,
+        codigo
+    },
     {
         cantidad
     },{
