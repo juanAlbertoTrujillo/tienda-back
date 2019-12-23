@@ -14,7 +14,7 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
     
     console.log('identificador1111111111111111111')
     console.log(identificador)
-    if( identificador ){
+    if( identificador === undefined){
         console.log('entra')
         identificador = uuidv1();
     }
