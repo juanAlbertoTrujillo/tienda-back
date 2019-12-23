@@ -23,7 +23,7 @@ async function agregarArticuloCarrito(req, res) {
     }).lean();
     console.log('<<<<<<<findOOOOOOOOOOOOOOOOOOOOOOOOOne>>>>>>>');
     console.log(carrito);
-    if (carrito || carrito.length >= 1) {
+    if (carrito) {
         console.log(carrito);
         cantidad = carrito.cantidad + 1;
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>');

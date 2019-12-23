@@ -24,7 +24,7 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
     }).lean();
     console.log('<<<<<<<findOOOOOOOOOOOOOOOOOOOOOOOOOne>>>>>>>')
     console.log(carrito)
-    if (carrito || carrito.length >= 1) {
+    if (carrito) {
         
         console.log(carrito)
         cantidad = carrito.cantidad +1;
