@@ -21,10 +21,9 @@ router.route('/usuarioc')
 router.route('/carrito')
     .post(agregarArticuloCarrito)
     .get(consultarCarrito)
-    .delete(eliminarArticuloCarrito)
     .put(actualizarArticuloCarrito)
 
-router.route('/carrito/:_id')
-    .delete(eliminarArticuloCarrito)
+router.route('/carritod')
+    .post(eliminarArticuloCarrito)
 
 export default router;
