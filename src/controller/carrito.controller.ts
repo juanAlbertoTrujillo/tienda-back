@@ -12,6 +12,12 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
     let { codigo, cantidad, usuario, identificador, titulo, descripcion, precio, categoria, imagenURL } = req.body;
     let respuesta;
 
+    console.log(identificador)
+    if( !identificador ){
+        console.log('entra')
+        identificador = uuidv1();
+    }
+
     const carrito = await Carrito.findOne({
         identificador,
         codigo
@@ -21,7 +27,7 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
     if (carrito.length >= 1) {
         
         console.log(carrito)
-        cantidad = carrito[0].cantidad +1;
+        cantidad = carrito.cantidad +1;
         console.log('<<<<<<<<<<<<<<<<<<<<<find>>>>>>>>>>>>>>>>>>>>>')
         respuesta = await Carrito.findOneAndUpdate(
             {
@@ -29,17 +35,12 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
                 codigo
             },
             {
-                cantidad
+                cantidad 
             },{
                 new: true
             });
     } else{
 
-        console.log(identificador)
-        if( !identificador ){
-            console.log('entra')
-            identificador = uuidv1();
-        }
         const nuevoArticulo = {
             codigo,
             cantidad,
@@ -52,13 +53,13 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
             imagenURL
         };
         const carrito = new Carrito(nuevoArticulo);
-        await carrito.save();
-        console.log(carrito);
+        respuesta = await carrito.save();
+        console.log(respuesta);
     } 
 
     return res.status(200).json({
         mensaje: 'Articulo agregado al carrito',
-        carrito
+        respuesta
     })
 }
 
