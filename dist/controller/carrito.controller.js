@@ -14,7 +14,6 @@ async function agregarArticuloCarrito(req, res) {
     let respuesta;
     console.log('identificador1111111111111111111');
     console.log(identificador);
-    console.log(!identificador);
     if (identificador) {
         console.log('entra');
         identificador = v1_1.default();
@@ -54,7 +53,6 @@ async function agregarArticuloCarrito(req, res) {
         };
         const carrito = new Carrito_1.default(nuevoArticulo);
         respuesta = await carrito.save();
-        console.log(respuesta);
     }
     return res.status(200).json({
         mensaje: 'Articulo agregado al carrito',

@@ -14,7 +14,6 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
     
     console.log('identificador1111111111111111111')
     console.log(identificador)
-    console.log(!identificador)
     if( identificador ){
         console.log('entra')
         identificador = uuidv1();
@@ -58,7 +57,6 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
         };
         const carrito = new Carrito(nuevoArticulo);
         respuesta = await carrito.save();
-        console.log(respuesta);
     } 
 
     return res.status(200).json({
