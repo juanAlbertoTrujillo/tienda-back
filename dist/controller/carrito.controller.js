@@ -8,8 +8,8 @@ const v1_1 = __importDefault(require("uuid/v1"));
 async function consultarCarrito(req, res) {
     console.log("consultarCarrito");
     console.log(req.body);
-    console.log(req.params);
-    const carrito = await Carrito_1.default.find();
+    let { usuario, identificador } = req.body;
+    const carrito = await Carrito_1.default.find({ usuario, identificador });
     return res.status(200).json(carrito);
 }
 exports.consultarCarrito = consultarCarrito;
