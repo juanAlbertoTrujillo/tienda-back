@@ -106,26 +106,16 @@ async function combinarCarrito(articulos) {
             identificador,
             codigo: codigoSinUsuario
         }).lean();
-        console.log('obtenerCantidad');
-        console.log(obtenerCantidad);
-        console.log('articulo.cantidad');
-        console.log(articulo.cantidad);
-        console.log('obtenerCantidad.cantidd');
-        console.log(obtenerCantidad.cantidad);
         cantidadNueva = articulo.cantidad + obtenerCantidad.cantidad;
-        console.log('cantidadNueva');
-        console.log(cantidadNueva);
-        // const coincidencia =  await Carrito.findOneAndUpdate(
-        //     {
-        //         usuario,
-        //         identificador,
-        //         codigoSinUsuario
-        //     },
-        //     {
-        //         cantidad 
-        //     },{
-        //         new: true
-        //     });
+        const coincidencia = await Carrito_1.default.findOneAndUpdate({
+            usuario,
+            identificador,
+            codigo: codigoSinUsuario
+        }, {
+            cantidad: cantidadNueva
+        }, {
+            new: true
+        });
     }
 }
 exports.combinarCarrito = combinarCarrito;
