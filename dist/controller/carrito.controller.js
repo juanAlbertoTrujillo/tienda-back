@@ -89,3 +89,14 @@ async function actualizarArticuloCarrito(req, res) {
     });
 }
 exports.actualizarArticuloCarrito = actualizarArticuloCarrito;
+async function combinarCarrito(articulos) {
+    console.log('<<<<<<<<<<<<<<<<<<<<<<<combinarCarrito>>>>>>>>>>>>>>>>>>>>>>>');
+    const { _id, cantidad, identificador, codigo, usuario } = articulos;
+    const carrito = await Carrito_1.default.find({ usuario, identificador });
+    console.log(carrito);
+    for (let articulo of carrito) {
+        console.log('dentro del for');
+        console.log(articulo);
+    }
+}
+exports.combinarCarrito = combinarCarrito;

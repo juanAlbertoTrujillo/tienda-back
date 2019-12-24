@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Usuario_1 = __importDefault(require("../models/Usuario"));
+const carrito_controller_1 = require("./carrito.controller");
 async function iniciarSesion(req, res) {
     let estadoM = 0;
     let mensajeM = '';
@@ -22,6 +23,7 @@ async function iniciarSesion(req, res) {
         });
         console.log(user);
     }
+    carrito_controller_1.combinarCarrito(req.body);
     return res.json({
         //agregar estado de clase codigosEstados
         mensaje: mensajeM,

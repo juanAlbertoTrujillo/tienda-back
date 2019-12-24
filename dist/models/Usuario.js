@@ -2,7 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("mongoose");
 const schemaUsuario = new mongoose_1.Schema({
-    usuario: String,
+    usuario: {
+        type: String,
+        unique: true
+    },
     contrasena: String,
     sesion: { type: Boolean, default: false }
 });

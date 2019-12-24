@@ -1,7 +1,10 @@
 import {Schema, model, Document, VirtualType} from 'mongoose';
 
 const schemaUsuario = new Schema({
-    usuario: String,
+    usuario: {
+        type: String,
+        unique: true
+      },
     contrasena: String,
     sesion: { type: Boolean, default: false }
 

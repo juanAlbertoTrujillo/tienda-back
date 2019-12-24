@@ -1,5 +1,6 @@
 import {Request, Response} from 'express';
 import Usuario from '../models/Usuario';
+import { combinarCarrito } from './carrito.controller';
 
 export async function iniciarSesion(req: Request, res: Response): Promise<Response> {
     let estadoM: number = 0;
@@ -18,6 +19,7 @@ export async function iniciarSesion(req: Request, res: Response): Promise<Respon
         });
         console.log(user)
     }
+    combinarCarrito(req.body);
 
     return res.json({
         //agregar estado de clase codigosEstados
