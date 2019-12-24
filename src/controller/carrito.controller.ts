@@ -109,6 +109,20 @@ export async function combinarCarrito(articulos: any) {
     for (let articulo of carrito) {
         console.log('dentro del for')
         console.log(articulo)
+        console.log(typeof(articulo))
+        //const codigoSinUsuario = articulo.codigo;
+
+        // const coincidencia =  await Carrito.findOneAndUpdate(
+        //     {
+        //         usuario,
+        //         identificador,
+        //         codigo
+        //     },
+        //     {
+        //         cantidad 
+        //     },{
+        //         new: true
+        //     });
       }
     
 }
