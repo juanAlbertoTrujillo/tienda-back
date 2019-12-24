@@ -140,7 +140,7 @@ export async function combinarCarrito(articulos: any) {
         console.log(cantidadNueva)
         console.log('usuario')
         console.log(usuario)
-        const coincidencia =  await Carrito.findOneAndUpdate(
+        const coincidencia =  await Carrito.updateOne(
             {
                 identificador,
                 codigo: codigoSinUsuario
@@ -148,10 +148,8 @@ export async function combinarCarrito(articulos: any) {
             {
                 cantidad: cantidadNueva,
                 usuario
-            },{
-                new: true
             });
-            await coincidencia?.save()
+            
             console.log('eliminar')
             const eliminado = await Carrito.findOneAndRemove({
                 uduario: null,

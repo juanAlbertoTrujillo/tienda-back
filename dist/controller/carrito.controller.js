@@ -92,7 +92,6 @@ async function actualizarArticuloCarrito(req, res) {
 }
 exports.actualizarArticuloCarrito = actualizarArticuloCarrito;
 async function combinarCarrito(articulos) {
-    var _a;
     console.log('<<<<<<<<<<<<<<<<<<<<<<<combinarCarrito>>>>>>>>>>>>>>>>>>>>>>>');
     const { _id, cantidad, identificador, codigo, usuario } = articulos;
     let cantidadNueva;
@@ -128,16 +127,13 @@ async function combinarCarrito(articulos) {
         console.log(cantidadNueva);
         console.log('usuario');
         console.log(usuario);
-        const coincidencia = await Carrito_1.default.findOneAndUpdate({
+        const coincidencia = await Carrito_1.default.updateOne({
             identificador,
             codigo: codigoSinUsuario
         }, {
             cantidad: cantidadNueva,
             usuario
-        }, {
-            new: true
         });
-        await ((_a = coincidencia) === null || _a === void 0 ? void 0 : _a.save());
         console.log('eliminar');
         const eliminado = await Carrito_1.default.findOneAndRemove({
             uduario: null,
