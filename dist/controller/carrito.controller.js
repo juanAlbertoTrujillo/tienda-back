@@ -104,7 +104,7 @@ async function combinarCarrito(articulos) {
         console.log(codigoSinUsuario);
         const obtenerCantidad = await Carrito_1.default.findOne({
             identificador,
-            codigoSinUsuario
+            codigo: codigoSinUsuario
         }).lean();
         console.log('obtenerCantidad');
         console.log(obtenerCantidad);
