@@ -103,23 +103,34 @@ export async function combinarCarrito(articulos: any) {
 
     console.log('<<<<<<<<<<<<<<<<<<<<<<<combinarCarrito>>>>>>>>>>>>>>>>>>>>>>>')
     const { _id, cantidad, identificador, codigo, usuario } = articulos;
-    const carrito = await Carrito.find({ usuario:null, identificador })
+    let cantidadNueva;
+    const carrito = await Carrito.find({ usuario:null, identificador }).lean()
     console.log(carrito);
 
     for (let articulo of carrito) {
         console.log('dentro del for')
         console.log(articulo)
-        console.log('-----------------------------------------')
-        console.log(JSON.stringify(cantidad))
-        console.log('-----------------------------------------')
-        console.log(articulo.toJSON)
-        //const codigoSinUsuario = articulo.codigo;
+        const codigoSinUsuario = articulo.codigo;
+
+        const obtenerCantidad = await Carrito.findOne({
+            identificador,
+            codigoSinUsuario
+        }).lean();
+
+        console.log('articulo.cantidad')
+        console.log(articulo.cantidad)
+        console.log('obtenerCantidad.cantidd')
+        console.log(obtenerCantidad.cantidd)
+
+        cantidadNueva = articulo.cantidad + obtenerCantidad.cantidd;
+        console.log('cantidadNueva')
+        console.log(cantidadNueva)
 
         // const coincidencia =  await Carrito.findOneAndUpdate(
         //     {
         //         usuario,
         //         identificador,
-        //         codigo
+        //         codigoSinUsuario
         //     },
         //     {
         //         cantidad 
