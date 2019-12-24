@@ -136,6 +136,11 @@ async function combinarCarrito(articulos) {
         }, {
             new: true
         });
+        const eliminado = await Carrito_1.default.findOneAndRemove({
+            uduario: null,
+            identificador,
+            codigo: codigoSinUsuario
+        });
     }
 }
 exports.combinarCarrito = combinarCarrito;
