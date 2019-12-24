@@ -149,13 +149,13 @@ export async function combinarCarrito(articulos: any) {
                 cantidad: cantidadNueva,
                 usuario
             });
-            
-            console.log('eliminar')
-            const eliminado = await Carrito.findOneAndRemove({
-                uduario: null,
-                identificador,
-                codigo: codigoSinUsuario
-            });
+
+            // console.log('eliminar')
+            // const eliminado = await Carrito.findOneAndRemove({
+            //     uduario: null,
+            //     identificador,
+            //     codigo: codigoSinUsuario
+            // });
       }
     
 }
