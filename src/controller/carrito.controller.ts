@@ -33,7 +33,8 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
         respuesta = await Carrito.findOneAndUpdate(
             {
                 identificador,
-                codigo
+                codigo,
+                usuario
             },
             {
                 cantidad 
@@ -130,7 +131,8 @@ export async function combinarCarrito(articulos: any) {
                 codigo: codigoSinUsuario
             },
             {
-                cantidad: cantidadNueva 
+                cantidad: cantidadNueva,
+                usuario
             },{
                 new: true
             });

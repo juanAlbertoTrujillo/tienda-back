@@ -29,7 +29,8 @@ async function agregarArticuloCarrito(req, res) {
         cantidad = carrito.cantidad + 1;
         respuesta = await Carrito_1.default.findOneAndUpdate({
             identificador,
-            codigo
+            codigo,
+            usuario
         }, {
             cantidad
         }, {
@@ -112,7 +113,8 @@ async function combinarCarrito(articulos) {
             identificador,
             codigo: codigoSinUsuario
         }, {
-            cantidad: cantidadNueva
+            cantidad: cantidadNueva,
+            usuario
         }, {
             new: true
         });
