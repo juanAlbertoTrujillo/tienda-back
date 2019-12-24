@@ -127,7 +127,7 @@ export async function combinarCarrito(articulos: any) {
         console.log('articulo.cantidad')
         console.log(articulo.cantidad)
         console.log('obtenerCantidad.cantidd')
-        console.log(obtenerCantidad.cantidd === null ? 0 : obtenerCantidad.cantidd )
+        console.log(obtenerCantidad.cantidd)
 
         cantidadNueva = articulo.cantidad + obtenerCantidad.cantidd;
         console.log('cantidadNueva')
