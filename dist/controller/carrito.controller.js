@@ -136,6 +136,7 @@ async function combinarCarrito(articulos) {
         }, {
             new: true
         });
+        console.log('eliminar');
         const eliminado = await Carrito_1.default.findOneAndRemove({
             uduario: null,
             identificador,
