@@ -103,7 +103,7 @@ export async function combinarCarrito(articulos: any) {
 
     console.log('<<<<<<<<<<<<<<<<<<<<<<<combinarCarrito>>>>>>>>>>>>>>>>>>>>>>>')
     const { _id, cantidad, identificador, codigo, usuario } = articulos;
-    const carrito = await Carrito.find({ usuario, identificador })
+    const carrito = await Carrito.find({ usuario:null, identificador })
     console.log(carrito);
 
     for (let articulo of carrito) {
