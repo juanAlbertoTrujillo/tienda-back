@@ -119,10 +119,11 @@ export async function combinarCarrito(articulos: any) {
         console.log(codigoSinUsuario)
 
         const obtenerCantidad = await Carrito.findOne({
+            usuario,
             identificador,
             codigo: codigoSinUsuario
         }).lean();
-
+        console.log('suma')
         cantidadNueva = articulo.cantidad + obtenerCantidad.cantidad;
 
         const coincidencia =  await Carrito.findOneAndUpdate(
