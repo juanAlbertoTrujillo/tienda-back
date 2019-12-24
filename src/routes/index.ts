@@ -23,6 +23,9 @@ router.route('/carrito')
     .get(consultarCarrito)
     .put(actualizarArticuloCarrito)
 
+router.route('/carrito/:usuario')
+    .get(consultarCarrito)
+
 router.route('/carritod')
     .post(eliminarArticuloCarrito)
 
