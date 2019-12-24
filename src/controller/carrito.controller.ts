@@ -127,7 +127,6 @@ export async function combinarCarrito(articulos: any) {
 
         const coincidencia =  await Carrito.findOneAndUpdate(
             {
-                usuario,
                 identificador,
                 codigo: codigoSinUsuario
             },

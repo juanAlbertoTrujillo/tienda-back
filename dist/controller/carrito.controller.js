@@ -110,7 +110,6 @@ async function combinarCarrito(articulos) {
         }).lean();
         cantidadNueva = articulo.cantidad + obtenerCantidad.cantidad;
         const coincidencia = await Carrito_1.default.findOneAndUpdate({
-            usuario,
             identificador,
             codigo: codigoSinUsuario
         }, {
