@@ -110,7 +110,14 @@ async function combinarCarrito(articulos) {
             codigo: codigoSinUsuario
         }).lean();
         console.log('suma');
-        cantidadNueva = articulo.cantidad + (obtenerCantidad.cantidad === null ? 0 : obtenerCantidad.cantidad);
+        if (obtenerCantidad) {
+            console.log('entra if');
+            cantidadNueva = articulo.cantidad + obtenerCantidad.cantidad;
+        }
+        else {
+            console.log('else');
+            cantidadNueva = articulo.cantidad;
+        }
         const coincidencia = await Carrito_1.default.findOneAndUpdate({
             identificador,
             codigo: codigoSinUsuario
