@@ -127,6 +127,12 @@ export async function combinarCarrito(articulos: any) {
         if (obtenerCantidad) {
             console.log('entra if')
             cantidadNueva = articulo.cantidad + obtenerCantidad.cantidad;
+            console.log('eliminar')
+            const eliminado = await Carrito.findOneAndRemove({
+                uduario: null,
+                identificador,
+                codigo: codigoSinUsuario
+            });
         } else {
             console.log('else')
             cantidadNueva = articulo.cantidad
@@ -149,13 +155,6 @@ export async function combinarCarrito(articulos: any) {
                 cantidad: cantidadNueva,
                 usuario
             });
-
-            // console.log('eliminar')
-            // const eliminado = await Carrito.findOneAndRemove({
-            //     uduario: null,
-            //     identificador,
-            //     codigo: codigoSinUsuario
-            // });
       }
     
 }
