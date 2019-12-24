@@ -23,7 +23,8 @@ export async function agregarArticuloCarrito(req: Request, res: Response): Promi
 
     const carrito = await Carrito.findOne({
         identificador,
-        codigo
+        codigo,
+        usuario
     }).lean();
 
     if (carrito) {

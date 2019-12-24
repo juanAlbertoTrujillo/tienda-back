@@ -22,7 +22,8 @@ async function agregarArticuloCarrito(req, res) {
     }
     const carrito = await Carrito_1.default.findOne({
         identificador,
-        codigo
+        codigo,
+        usuario
     }).lean();
     if (carrito) {
         console.log(carrito);
