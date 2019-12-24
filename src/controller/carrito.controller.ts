@@ -117,6 +117,9 @@ export async function combinarCarrito(articulos: any) {
             codigoSinUsuario
         }).lean();
 
+        console.log('obtenerCantidad')
+        console.log(obtenerCantidad)
+
         console.log('articulo.cantidad')
         console.log(articulo.cantidad)
         console.log('obtenerCantidad.cantidd')
