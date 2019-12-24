@@ -18,8 +18,8 @@ router.route('/carrito')
     .post(carrito_controller_1.agregarArticuloCarrito)
     .get(carrito_controller_1.consultarCarrito)
     .put(carrito_controller_1.actualizarArticuloCarrito);
-router.route('/carrito/:usuario')
-    .get(carrito_controller_1.consultarCarrito);
+router.route('/carritou')
+    .post(carrito_controller_1.consultarCarrito);
 router.route('/carritod')
     .post(carrito_controller_1.eliminarArticuloCarrito);
 exports.default = router;
