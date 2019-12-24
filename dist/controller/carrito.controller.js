@@ -92,28 +92,19 @@ async function actualizarArticuloCarrito(req, res) {
 }
 exports.actualizarArticuloCarrito = actualizarArticuloCarrito;
 async function combinarCarrito(articulos) {
-    console.log('<<<<<<<<<<<<<<<<<<<<<<<combinarCarrito>>>>>>>>>>>>>>>>>>>>>>>');
     const { _id, cantidad, identificador, codigo, usuario } = articulos;
     let cantidadNueva;
     const carrito = await Carrito_1.default.find({ usuario: null, identificador }).lean();
     console.log(carrito);
     for (let articulo of carrito) {
-        console.log('dentro del for');
-        console.log(articulo);
         const codigoSinUsuario = articulo.codigo;
-        console.log('filtro');
-        console.log(identificador);
-        console.log(codigoSinUsuario);
         const obtenerCantidad = await Carrito_1.default.findOne({
             usuario,
             identificador,
             codigo: codigoSinUsuario
         }).lean();
-        console.log('suma');
         if (obtenerCantidad) {
-            console.log('entra if');
             cantidadNueva = articulo.cantidad + obtenerCantidad.cantidad;
-            console.log('eliminar');
             const eliminado = await Carrito_1.default.findOneAndRemove({
                 uduario: null,
                 identificador,
@@ -121,18 +112,8 @@ async function combinarCarrito(articulos) {
             });
         }
         else {
-            console.log('else');
             cantidadNueva = articulo.cantidad;
         }
-        console.log("antes del update");
-        console.log('identificador');
-        console.log(identificador);
-        console.log('codigoSinUsuario');
-        console.log(codigoSinUsuario);
-        console.log('cantidadNueva');
-        console.log(cantidadNueva);
-        console.log('usuario');
-        console.log(usuario);
         const coincidencia = await Carrito_1.default.updateOne({
             identificador,
             codigo: codigoSinUsuario
