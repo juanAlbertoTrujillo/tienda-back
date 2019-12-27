@@ -3,7 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 async function buscarMasDeUno(modelo, filtro = {}) {
     console.log("buscarMasDeUno");
     console.log(filtro);
+    console.log('modelo');
     console.log(typeof (modelo));
+    console.log('filtro');
     console.log(typeof (filtro));
     // const busqueda = await modelo.find(filtro)
     return await modelo.find(filtro).lean();
