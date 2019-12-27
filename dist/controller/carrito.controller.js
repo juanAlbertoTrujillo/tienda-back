@@ -3,14 +3,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const Query_1 = require("../models/Query");
 const Carrito_1 = __importDefault(require("../models/Carrito"));
 const v1_1 = __importDefault(require("uuid/v1"));
 async function consultarCarrito(req, res) {
     console.log("consultarCarrito");
     console.log(req.body);
     let { usuario, identificador } = req.body;
-    const carrito = await Carrito_1.default.find({ usuario, identificador });
-    return res.status(200).json(carrito);
+    let filtro = {
+        usuario,
+        identificador
+    };
+    return res.status(200).json(await Query_1.buscarMasDeUno(Carrito_1.default, filtro));
 }
 exports.consultarCarrito = consultarCarrito;
 async function agregarArticuloCarrito(req, res) {

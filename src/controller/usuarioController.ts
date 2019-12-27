@@ -1,6 +1,7 @@
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 import Usuario from '../models/Usuario';
 import { combinarCarrito } from './carrito.controller';
+import { buscarUno, actualizar, guardar } from '../models/Query'
 
 export async function iniciarSesion(req: Request, res: Response): Promise<Response> {
     let estadoM: number = 0;

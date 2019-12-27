@@ -1,4 +1,5 @@
 import {Request, Response} from 'express';
+import { buscarUno, buscarMasDeUno, actualizar, guardar } from '../models/Query'
 import Carrito from '../models/Carrito';
 import uuidv1 from 'uuid/v1';
 
@@ -6,8 +7,12 @@ export async function consultarCarrito(req: Request, res: Response): Promise<Res
     console.log("consultarCarrito")
     console.log(req.body);
     let { usuario, identificador } = req.body;
-    const carrito = await Carrito.find({ usuario, identificador })
-    return res.status(200).json(carrito);
+    let filtro = {
+        usuario,
+        identificador
+    }
+
+    return res.status(200).json(await buscarMasDeUno(Carrito, filtro));
    
 }
 
