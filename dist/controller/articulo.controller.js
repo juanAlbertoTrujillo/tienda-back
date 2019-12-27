@@ -5,13 +5,20 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Articulo_1 = __importDefault(require("../models/Articulo"));
 const Query_1 = require("../models/Query");
+/**
+ * Metodo para obtener todos los articulos en la tienda
+ * @param req
+ * @param res
+ */
 async function obtenerArticulos(req, res) {
-    console.log('buscarMasDeUno(Articulo');
-    let algo = await Query_1.buscarMasDeUno(Articulo_1.default);
-    console.log(typeof (algo));
-    return res.status(200).json(algo);
+    return res.status(200).json(await Query_1.buscarMasDeUno(Articulo_1.default));
 }
 exports.obtenerArticulos = obtenerArticulos;
+/**
+ * Metodo para agregar nuevos articulos a la tienda
+ * @param req
+ * @param res
+ */
 async function agregarArticulo(req, res) {
     const { titulo, descripcion, precio, categoria, codigo, imagenURL } = req.body;
     const nuevoArticulo = {
