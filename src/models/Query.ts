@@ -1,12 +1,12 @@
 
-export async function buscarMasDeUno(modelo: any, filtro: any): Promise<any> {
+export async function buscarMasDeUno(modelo: any, filtro: any = {}): Promise<any> {
     console.log("buscarMasDeUno")
     console.log(filtro);
     // const busqueda = await modelo.find(filtro)
     return await modelo.find(filtro).lean();
    
 }
-export async function buscarUno(modelo: any, filtro: any): Promise<any> {
+export async function buscarUno(modelo: any, filtro: any = {}): Promise<any> {
     console.log("buscarUno")
     console.log(filtro);
     // const busqueda = await modelo.find(filtro)

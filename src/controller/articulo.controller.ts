@@ -1,8 +1,10 @@
-import {Request, Response} from 'express';
+import { Request, Response } from 'express';
 import Articulo from '../models/Articulo';
+import { buscarMasDeUno, guardar } from '../models/Query'
 
 export async function obtenerArticulos(req: Request, res: Response): Promise<Response> {
-    return res.status(200).json( await Articulo.find());
+
+    return res.status(200).json(buscarMasDeUno(Articulo));
    
 }
 

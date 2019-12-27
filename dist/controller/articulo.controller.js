@@ -4,8 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const Articulo_1 = __importDefault(require("../models/Articulo"));
+const Query_1 = require("../models/Query");
 async function obtenerArticulos(req, res) {
-    return res.status(200).json(await Articulo_1.default.find());
+    return res.status(200).json(Query_1.buscarMasDeUno(Articulo_1.default));
 }
 exports.obtenerArticulos = obtenerArticulos;
 async function agregarArticulo(req, res) {
