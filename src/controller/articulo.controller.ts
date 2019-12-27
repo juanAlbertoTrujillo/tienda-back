@@ -4,6 +4,8 @@ import { buscarMasDeUno, guardar } from '../models/Query'
 
 export async function obtenerArticulos(req: Request, res: Response): Promise<Response> {
 
+    console.log(buscarMasDeUno(Articulo))
+
     return res.status(200).json(buscarMasDeUno(Articulo));
    
 }
