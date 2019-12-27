@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Articulo_1 = __importDefault(require("../models/Articulo"));
 const Query_1 = require("../models/Query");
 async function obtenerArticulos(req, res) {
+    console.log('buscarMasDeUno(Articulo');
     console.log(typeof (await Query_1.buscarMasDeUno(Articulo_1.default)));
     return res.status(200).json(await Query_1.buscarMasDeUno(Articulo_1.default));
 }
