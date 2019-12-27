@@ -4,8 +4,9 @@ import { buscarMasDeUno, guardar } from '../models/Query'
 
 export async function obtenerArticulos(req: Request, res: Response): Promise<Response> {
     console.log('buscarMasDeUno(Articulo')
-    console.log(typeof(await buscarMasDeUno(Articulo)))
-    return res.status(200).json(await buscarMasDeUno(Articulo));
+    let algo = await buscarMasDeUno(Articulo)
+    console.log(typeof(algo))
+    return res.status(200).json(algo);
 }
 
 export async function agregarArticulo(req: Request, res: Response): Promise<Response> {
