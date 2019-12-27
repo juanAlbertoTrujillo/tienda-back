@@ -2,6 +2,8 @@
 export async function buscarMasDeUno(modelo: any, filtro: any = {}): Promise<any> {
     console.log("buscarMasDeUno")
     console.log(filtro);
+    console.log(typeof(modelo))
+    console.log(typeof(filtro))
     // const busqueda = await modelo.find(filtro)
     return await modelo.find(filtro).lean();
    
