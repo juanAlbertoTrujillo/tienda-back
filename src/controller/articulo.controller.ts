@@ -4,10 +4,7 @@ import { buscarMasDeUno, guardar } from '../models/Query'
 
 export async function obtenerArticulos(req: Request, res: Response): Promise<Response> {
 
-    console.log(await buscarMasDeUno(Articulo))
-
     return res.status(200).json(await buscarMasDeUno(Articulo));
-   
 }
 
 export async function agregarArticulo(req: Request, res: Response): Promise<Response> {
@@ -22,7 +19,7 @@ export async function agregarArticulo(req: Request, res: Response): Promise<Resp
         imagenURL
     };
     const articulo = new Articulo(nuevoArticulo);
-    await articulo.save();
+    await guardar(articulo);
 
     return res.status(200).json({
         mensaje: 'Articulo agregado',
